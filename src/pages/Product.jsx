@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/cartContext";
+import { API_URL } from "../config";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -18,7 +19,8 @@ export default function Products() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch("https://fakestoreapi.com/products");
+        const res = await fetch(`${API_URL}/products`);
+;
         const data = await res.json();
         setProducts(data);
         setFilteredProducts(data);

@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSearch } from "../context/SearchContext";
+import { API_URL } from "../config";
 
 // 🌟 Expanded featured products
 const featuredProducts = [
@@ -130,7 +131,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+     fetch(`${API_URL}/products`)
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .catch((err) => console.error("Error fetching products:", err))
